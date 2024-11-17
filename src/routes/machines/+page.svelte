@@ -1,4 +1,5 @@
 <script>
+	import { goto } from "$app/navigation";
     import Drawer from "$lib/drawer.svelte";
     let isDrawerOpen = false;
     const machines = [
@@ -30,7 +31,9 @@
                 <div class="rounded-lg p-6 bg-black flex flex-col items-center justify-between h-72 w-72 shadow-lg hover:shadow-xl">
                     <span class="text-2xl font-semibold text-gray-200">{machine.name}</span> 
                     <span class="text-3xl font-bold text-white my-4">{machine.price}</span>
-                    <button class="text-xl p-3 rounded-xl bg-white font-bold shadow-md">
+                    <button class="text-xl p-3 rounded-xl bg-white font-bold shadow-md"
+                    on:click={()=>goto("/rechargeandbalance")}
+                    >
                         Manage
                     </button>
                 </div>
