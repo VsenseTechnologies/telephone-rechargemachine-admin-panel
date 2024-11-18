@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
    export let isDrawerOpen = false;
 
 function toggleDrawer() {
@@ -7,11 +7,11 @@ function toggleDrawer() {
 </script>
 
 
-{#if isDrawerOpen}
+{#if isDrawerOpen} -->
 
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div
+    <!-- <div
         class="fixed inset-0 bg-black bg-opacity-50 z-40"
         on:click={toggleDrawer} 
     ></div>
@@ -58,9 +58,9 @@ function toggleDrawer() {
             </div>
         </div>
 
-{/if}
+{/if} -->
 
 <!-- svelte-ignore a11y_consider_explicit_label -->
-<button on:click={toggleDrawer} class="fixed bottom-4 right-4 p-4 ">
+<!-- <button on:click={toggleDrawer} class="fixed bottom-4 right-4 p-4 ">
    
-</button>
+</button> -->
