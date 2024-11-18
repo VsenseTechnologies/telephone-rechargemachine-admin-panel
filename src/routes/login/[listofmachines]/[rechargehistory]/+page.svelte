@@ -4,6 +4,7 @@
 
     let activeTab = 'recharge';
     let rechargeData = [];
+    let expenseData = [];
     let isModalOpen = false;
     let rechargeAmount = '';
 
@@ -23,17 +24,47 @@
                         time: date.toLocaleTimeString()
                     };
                 });
-                console.log(rechargeData);
+                console.log("Recharge Data:", rechargeData);
             } else {
                 const errorData = await response.json();
-                console.error("Error fetching History:", errorData['message']);
+                console.error("Error fetching Recharge History:", errorData['message']);
             }
         } catch (error) {
-            console.error("Error fetching History:", error);
+            console.error("Error fetching Recharge History:", error);
         }
     };
 
-    onMount(fetchRechargeHistory);
+   
+    const fetchExpenseHistory = async () => {
+        try {
+            const response = await fetch(`https://telephone.http.vsensetech.in/admin/expense/history/${$page.params.rechargehistory}`, {
+                method: "GET"
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                expenseData = data.expense_history.map(expense => {
+                    const date = new Date(expense.timestamp);
+                    return {
+                        ...expense,
+                        date: date.toLocaleDateString(),
+                        time: date.toLocaleTimeString()
+                    };
+                });
+                console.log("Expense Data:", expenseData);
+            } else {
+                const errorData = await response.json();
+                console.error("Error fetching Expense History:", errorData['message']);
+            }
+        } catch (error) {
+            console.error("Error fetching Expense History:", error);
+        }
+    };
+
+    onMount(() => {
+        fetchRechargeHistory();
+        fetchExpenseHistory();
+    });
 
     function switchTab(tab) {
         activeTab = tab;
@@ -74,7 +105,6 @@
     }
 </script>
 
-
 <div class="relative min-h-screen bg-white text-gray-800 font-sans">
     <div class="flex justify-center mt-8 space-x-6">
         <button
@@ -107,7 +137,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {#each rechargeData as recharge,index}
+                        {#each rechargeData as recharge, index}
                             <tr class="border-t hover:bg-gray-50 transition">
                                 <td class="px-6 py-4 text-base">{index+1}</td>
                                 <td class="px-6 py-4 text-base">{recharge.amount}</td>
@@ -119,9 +149,28 @@
                 </table>
             </div>
         {:else if activeTab === 'expense'}
-            <h2 class="text-4xl font-semibold mb-8 text-center text-gray-900">Expense Details</h2>
-            <div class="p-6 border rounded-lg bg-gray-50 shadow-md">
-                <p class="text-lg text-gray-500">No expense data available yet.</p>
+            <h2 class="text-4xl font-semibold mb-8 text-center text-gray-900">Expense History</h2>
+            <div class="overflow-x-auto shadow-xl rounded-lg border border-gray-200">
+                <table class="w-full table-auto text-left">
+                    <thead class="bg-gray-900 text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-sm font-semibold text-left">ID</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-left">Amount</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-left">Date</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-left">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {#each expenseData as expense, index}
+                            <tr class="border-t hover:bg-gray-50 transition">
+                                <td class="px-6 py-4 text-base">{index+1}</td>
+                                <td class="px-6 py-4 text-base">{expense.amount}</td>
+                                <td class="px-6 py-4 text-base">{expense.date}</td>
+                                <td class="px-6 py-4 text-base">{expense.time}</td>
+                            </tr>
+                        {/each}
+                    </tbody>
+                </table>
             </div>
         {/if}
     </div>

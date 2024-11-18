@@ -8,7 +8,8 @@
     let showModal = false;
     let newMachineId = '';
     let newMachineLabel = ''; 
-    
+   
+
     const fetchmachines = async () => {
         try {
             const response = await fetch(`https://telephone.http.vsensetech.in/admin/machines/${$page.params.listofmachines}`, {
@@ -19,6 +20,7 @@
                 const data = await response.json();
                 machinelist = [...data.machines]; 
                 console.log(machinelist);
+               
             } else {
                 const errorData = await response.json();
                 console.error("Error fetching machines:", errorData['message']);
@@ -27,6 +29,8 @@
             console.error("Error fetching machines:", error);
         }
     };
+
+
 
     const addMachines = async (event) => {
         event.preventDefault(); 
