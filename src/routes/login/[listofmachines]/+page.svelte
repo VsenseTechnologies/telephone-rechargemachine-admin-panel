@@ -8,6 +8,9 @@
     let showModal = false;
     let newMachineId = '';
     let newMachineLabel = ''; 
+    let isLoading = true;
+    let loading =false;
+
    
 
     const fetchmachines = async () => {
@@ -20,7 +23,7 @@
                 const data = await response.json();
                 machinelist = [...data.machines]; 
                 console.log(machinelist);
-               
+                isLoading = false;
             } else {
                 const errorData = await response.json();
                 console.error("Error fetching machines:", errorData['message']);
@@ -30,22 +33,19 @@
         }
     };
 
-
-
     const addMachines = async (event) => {
         event.preventDefault(); 
-        
         try {
             const response = await fetch(`https://telephone.http.vsensetech.in/admin/create/machine/${$page.params.listofmachines}`, {
                 method: "POST",
                 body: JSON.stringify({ machine_id: newMachineId, label: newMachineLabel }),
                
             });
-
             if (response.ok) {
                 newMachineId = '';
                 newMachineLabel = ''; 
                 showModal = false;
+                loading =false;
                 await fetchmachines();
             } else {
                 const errorData = await response.json();
@@ -60,7 +60,11 @@
 </script>
 
 <div class="relative p-8 bg-white min-h-screen">
-  
+    {#if isLoading}
+        <div class="fixed inset-0 flex items-center justify-center z-40">
+            <div class="w-16 h-16 border-6 border-t-8 border-black border-solid rounded-full animate-spin"></div>
+        </div>
+        {:else}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8">
         {#each machinelist as machine}
             <div class="flex justify-center">
@@ -73,14 +77,13 @@
                     </button>
                 </div>
             </div>
-        {/each}
+        {/each}  
     </div>
-  
+{/if}
     <button class="fixed bottom-8 right-8 w-16 h-16 bg-black text-white text-4xl rounded-full flex items-center justify-center shadow-lg"
         on:click={() => showModal = true}>
         +
     </button>
-
     {#if showModal}
         <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div class="bg-white p-8 rounded-lg shadow-lg w-96">
@@ -90,7 +93,7 @@
                            placeholder="Machine ID"
                            bind:value={newMachineId} 
                            class="w-full p-2 mb-10 border border-gray-300 rounded-lg text-lg" />
-
+                           
                     <input type="text" 
                            placeholder="Label" 
                            bind:value={newMachineLabel} 
@@ -102,7 +105,11 @@
                             Cancel
                         </button>
                         <button class="px-4 py-2 bg-black text-white rounded-lg text-lg">
-                            Create
+                        {#if loading}
+                            <div class="animate-spin rounded-full h-6 w-6 border-t-4 border-white border-solid border-transparent"></div>
+                        {:else}
+                          Create
+                        {/if}
                         </button>
                     </div>
                 </form>

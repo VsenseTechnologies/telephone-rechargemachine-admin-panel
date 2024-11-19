@@ -7,6 +7,7 @@
     let expenseData = [];
     let isModalOpen = false;
     let rechargeAmount = '';
+    let loading = true;
 
     const fetchRechargeHistory = async () => {
         try {
@@ -43,6 +44,7 @@
 
             if (response.ok) {
                 const data = await response.json();
+                loading = false;
                 expenseData = data.expense_history.map(expense => {
                     const date = new Date(expense.timestamp);
                     return {
@@ -106,6 +108,7 @@
 </script>
 
 <div class="relative min-h-screen bg-white text-gray-800 font-sans">
+    
     <div class="flex justify-center mt-8 space-x-6">
         <button
             class={`px-8 py-4 text-xl font-semibold transition duration-200
@@ -208,7 +211,11 @@
                         class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm transition duration-200 hover:bg-gray-300"
                         on:click={closeRechargeModal}
                     >
-                        Cancel
+                    {#if loading}
+                    <div class="animate-spin rounded-full h-6 w-6 border-t-4 border-white border-solid border-transparent"></div>
+                {:else}
+                  Create
+                {/if}
                     </button>
                 </div>
             </div>
