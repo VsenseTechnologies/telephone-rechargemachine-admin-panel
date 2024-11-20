@@ -44,7 +44,6 @@
             const response = await fetch(`https://telephone.http.vsensetech.in/admin/create/machine/${$page.params.listofmachines}`, {
                 method: "POST",
                 body: JSON.stringify({ machine_id: newMachineId, label: newMachineLabel }),
-               
             });
             if (response.ok) {
                 newMachineId = '';
@@ -75,8 +74,6 @@
 
 <Drawer {isDrawerOpen} {toggleDrawer} />
 
-   
-    
     {#if isLoading}
         <div class="fixed inset-0 flex items-center justify-center z-40">
             <div class="w-16 h-16 border-6 border-t-8 border-black border-solid rounded-full animate-spin"></div>
@@ -87,6 +84,7 @@
             <div class="flex justify-center">
                 <div class="rounded-lg p-8 bg-white flex flex-col items-center justify-between h-80 w-80 space-y-6 border-2 border-gray-300 shadow-gray-300 shadow-sm duration-200 hover:shadow-lg hover:scale-105">
                     <span class="text-xl font-semibold text-black">{machine.label}</span>
+                    <span class="text-xl font-semibold text-black">{machine.machine_id}</span>
                     <span class="text-4xl font-semibold text-black my-4">₹ {machine.balance}</span>
                     <button class="text-lg py-3 px-6 rounded-full bg-black text-white font-semibold"
                         on:click={() => goto("/login/"+$page.params.listofmachines+"/"+machine.machine_id)}>

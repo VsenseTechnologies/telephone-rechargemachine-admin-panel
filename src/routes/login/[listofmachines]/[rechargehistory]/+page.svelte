@@ -125,6 +125,7 @@
 <Drawer {isDrawerOpen} {toggleDrawer} />
     
     <div class="flex justify-center mt-24 space-x-4">
+        
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
@@ -147,7 +148,6 @@
 
     <div class="mt-8 px-6">
         {#if activeTab === 'recharge'}
-            <h2 class="text-3xl font-semibold mb-6 text-center text-gray-900">Recharge History</h2>
             <div class="overflow-x-auto shadow-xl rounded-lg border border-gray-200">
                 <table class="w-full table-auto text-left">
                     <thead class="bg-gray-900 text-white">
@@ -181,7 +181,7 @@
             </div>
 
         {:else if activeTab === 'expense'}
-            <h2 class="text-3xl font-semibold mb-6 text-center text-gray-900">Expense History</h2>
+         
             <div class="overflow-x-auto shadow-xl rounded-lg border border-gray-200">
                 <table class="w-full table-auto text-left">
                     <thead class="bg-gray-900 text-white">
