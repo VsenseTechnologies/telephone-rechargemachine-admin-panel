@@ -109,7 +109,7 @@
 
 <div class="relative min-h-screen bg-white text-gray-800 font-sans">
     
-    <div class="flex justify-center mt-8 space-x-6">
+    <div class="flex justify-center mt-24 space-x-6">
         <button
             class={`px-8 py-4 text-xl font-semibold transition duration-200
                     ${activeTab === 'recharge' ? 'bg-gray-900 text-white shadow-md' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}`}

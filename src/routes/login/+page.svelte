@@ -1,9 +1,8 @@
-<script lang="ts">
+<script >
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
-    import Errormessage from "$lib/errormessage.svelte";
-    import { page } from '$app/stores';
-    import { get } from 'svelte/store';
+   import Errormessage from '../../lib/errormessage.svelte';
+   
 
     let vsenseText = '';
     const text = 'Vsense Technologies';

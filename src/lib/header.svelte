@@ -1,7 +1,4 @@
-<div class = "bg-black h-16 rounded-b-lg shadow-md">
-
-
-    <!-- svelte-ignore a11y_missing_content -->
-    <h1 class="text-white font-semibold text-2xl justify-center text-left py-4 px-20">Machines</h1>
-
-</div>
+<header class="fixed top-0 left-0 w-full bg-black py-5 px-2 flex items-center md:justify-start justify-center z-20 rounded-t-none rounded-b-xl ">
+    <h1 class =" text-white font-bold px-20 text-2xl py-0 justify-normal">Recharge Machine</h1>
+   
+   </header>    

@@ -3,6 +3,13 @@
     import { page } from '$app/stores';
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
+    import Drawer from "$lib/drawer.svelte";
+
+    let isDrawerOpen = false;
+
+    function toggleDrawer() {
+        isDrawerOpen = !isDrawerOpen;
+    }
 
     let machinelist = [];
     let showModal = false;
@@ -10,8 +17,6 @@
     let newMachineLabel = ''; 
     let isLoading = true;
     let loading =false;
-
-   
 
     const fetchmachines = async () => {
         try {
@@ -59,7 +64,19 @@
     onMount(fetchmachines);
 </script>
 
-<div class="relative p-8 bg-white min-h-screen">
+<div class="relative mt-24 bg-white min-h-screen">
+    <!-- svelte-ignore a11y_consider_explicit_label -->
+    <button
+    class="fixed top-1 left-4 p-4 text-2xl text-white rounded-xl transition duration-300 z-50"
+    on:click={toggleDrawer}
+>
+    <i class="fas fa-bars"></i>
+</button>
+
+<Drawer {isDrawerOpen} {toggleDrawer} />
+
+   
+    
     {#if isLoading}
         <div class="fixed inset-0 flex items-center justify-center z-40">
             <div class="w-16 h-16 border-6 border-t-8 border-black border-solid rounded-full animate-spin"></div>
@@ -93,7 +110,7 @@
                            placeholder="Machine ID"
                            bind:value={newMachineId} 
                            class="w-full p-2 mb-10 border border-gray-300 rounded-lg text-lg" />
-                           
+
                     <input type="text" 
                            placeholder="Label" 
                            bind:value={newMachineLabel} 
