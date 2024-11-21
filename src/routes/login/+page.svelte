@@ -77,7 +77,7 @@
                     id="admin_name"
                     name="admin_name"
                     type="text"
-                    placeholder="Email"
+                    placeholder="Name"
                     bind:value={admin_name}
                     class="w-full p-3 border border-gray-300 text-base md:text-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black rounded-2xl"
                     required

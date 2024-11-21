@@ -151,12 +151,12 @@
     </div>
     {/if}
 
-    <div class="flex justify-center mt-24 space-x-4">
+    <div class="flex justify-center mt-24 ">
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
             class={`px-6 py-2 text-lg font-semibold transition duration-200 cursor-pointer
-                    ${activeTab === 'recharge' ? 'bg-gray-900 text-white shadow-md' : 'border-gray-300 border-2 text-gray-600 '}`}
+                    ${activeTab === 'recharge' ? 'bg-gray-900 text-white shadow-md' : 'border-gray-300 border-2 text-gray-600 border-r-black'}`}
             on:click={() => switchTab('recharge')}
         >
             Recharge
@@ -166,7 +166,7 @@
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
             class={`px-6 py-2 text-lg font-semibold transition duration-200 cursor-pointer
-                    ${activeTab === 'expense' ? 'bg-gray-900 text-white shadow-md' : 'border-gray-300 border-2 text-gray-600'}`}
+                    ${activeTab === 'expense' ? 'bg-gray-900 text-white shadow-md' : 'border-gray-300 border-2 text-gray-600 border-l-black'}`}
             on:click={() => switchTab('expense')}
         >
             Expense
