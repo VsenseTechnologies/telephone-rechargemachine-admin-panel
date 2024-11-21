@@ -1,6 +1,7 @@
 <script>
     import { page } from "$app/stores";
     import { onMount } from "svelte";
+    import Drawer from "$lib/drawer.svelte";
 
     let activeTab = 'recharge';
     let rechargeData = [];
@@ -8,7 +9,7 @@
     let isModalOpen = false;
     let rechargeAmount = '';
     let loading = true;
-    import Drawer from "$lib/drawer.svelte";
+  
 
     let isDrawerOpen = false;
 
@@ -21,6 +22,7 @@
             const response = await fetch(`https://telephone.http.vsensetech.in/admin/recharge/history/${$page.params.rechargehistory}`, {
                 method: "GET"
             });
+
 
             if (response.ok) {
                 const data = await response.json();
@@ -223,24 +225,24 @@
                     />
                 </div>
                 <div class="flex justify-between">
-                    <button
-                        class="px-6 py-2 bg-gray-900 text-white rounded-lg shadow-sm transition duration-200 hover:bg-gray-800"
-                        on:click={handleRecharge}
-                    >
-                        Recharge
-                    </button>
+                   
                     <button
                         class="px-6 py-2  text-gray-700 rounded-lg shadow-sm transition duration-200 border-gray-300 border-2"
                         on:click={closeRechargeModal}
                     >
-                        {#if loading}
-                            <div class="animate-spin rounded-full h-6 w-6 border-t-4 border-white border-solid border-transparent"></div>
-                        {:else}
-                            Close
-                        {/if}
+                       close
                     </button>
+                    <button class="px-4 py-2 bg-black text-white rounded-lg text-lg flex items-center justify-center min-w-[100px]"
+                    on:click={handleRecharge}>
+                {#if loading}
+                    <div class="animate-spin rounded-full h-6 w-6 border-t-4 border-white border-solid border-transparent"></div>
+                {:else}
+                    <span>Recharge</span>
+                {/if}
+            </button>
                 </div>
             </div>
         </div>
     {/if}
 </div>
+
