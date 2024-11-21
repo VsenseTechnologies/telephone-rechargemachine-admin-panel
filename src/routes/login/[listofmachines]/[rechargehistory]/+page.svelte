@@ -155,7 +155,7 @@
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
-            class={`px-6 py-2 text-lg font-semibold transition duration-200 cursor-pointer
+            class={`px-8 py-2 text-lg font-semibold transition duration-200 cursor-pointer rounded-l-lg
                     ${activeTab === 'recharge' ? 'bg-gray-900 text-white shadow-md' : 'border-gray-300 border-2 text-gray-600 border-r-black'}`}
             on:click={() => switchTab('recharge')}
         >
@@ -165,7 +165,7 @@
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
-            class={`px-6 py-2 text-lg font-semibold transition duration-200 cursor-pointer
+            class={`px-8 py-2 text-lg font-semibold transition duration-200 cursor-pointer rounded-r-lg
                     ${activeTab === 'expense' ? 'bg-gray-900 text-white shadow-md' : 'border-gray-300 border-2 text-gray-600 border-l-black'}`}
             on:click={() => switchTab('expense')}
         >
