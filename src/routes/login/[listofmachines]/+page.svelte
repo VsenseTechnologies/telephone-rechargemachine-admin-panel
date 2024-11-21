@@ -102,8 +102,8 @@
             {#each machinelist as machine}
                 <div class="flex justify-center">
                     <div class="rounded-lg p-8 bg-white flex flex-col items-center justify-between h-80 w-80 space-y-4 border-2 border-gray-300 shadow-md hover:shadow-lg hover:scale-105 duration-200">
-                        <span class="text-xl font-medium text-gray-800">{machine.label}</span>
-                        <span class="text-sm text-gray-500">{machine.machine_id}</span>
+                        <span class="text-xl text-center font-bold text-gray-800">{machine.label}</span>
+                        <span class="py-2 px-4 rounded-full text-xs font-semibold text-white bg-green-400" >{machine.machine_id.toUpperCase()}</span>
                         <span class="text-3xl font-semibold text-gray-900 my-4">₹ {machine.balance.toLocaleString('en-IN')}</span>
                         <button class="text-base py-2 px-5 rounded-lg bg-gray-900 text-white font-medium "
                                 on:click={()=>goto("/login/"+$page.params.listofmachines+"/"+machine.machine_id)}
@@ -116,9 +116,10 @@
         </div>
         
 {/if}
-    <button class="fixed bottom-8 right-8 w-16 h-16 bg-black text-white text-4xl rounded-full flex items-center justify-center shadow-lg"
+    <!-- svelte-ignore a11y_consider_explicit_label -->
+    <button class="fixed bottom-8 right-8 w-14 h-14 bg-black text-white text-xl rounded-full flex items-center justify-center shadow-lg"
         on:click={() => showModal = true}>
-        +
+        <i class="fa-solid fa-plus"></i>
     </button>
     {#if showModal}
         <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
