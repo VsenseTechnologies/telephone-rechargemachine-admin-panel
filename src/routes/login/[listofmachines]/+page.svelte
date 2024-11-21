@@ -104,7 +104,7 @@
                     <div class="rounded-lg p-8 bg-white flex flex-col items-center justify-between h-80 w-80 space-y-4 border-2 border-gray-300 shadow-md hover:shadow-lg hover:scale-105 duration-200">
                         <span class="text-xl font-medium text-gray-800">{machine.label}</span>
                         <span class="text-sm text-gray-500">{machine.machine_id}</span>
-                        <span class="text-3xl font-semibold text-gray-900 my-4">₹ {machine.balance}</span>
+                        <span class="text-3xl font-semibold text-gray-900 my-4">₹ {machine.balance.toLocaleString('en-IN')}</span>
                         <button class="text-base py-2 px-5 rounded-lg bg-gray-900 text-white font-medium "
                                 on:click={()=>goto("/login/"+$page.params.listofmachines+"/"+machine.machine_id)}
                         >
