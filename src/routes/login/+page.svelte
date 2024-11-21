@@ -35,7 +35,6 @@
         try {
             const response = await fetch("https://telephone.http.vsensetech.in/login/admin", {
                 method: "POST",
-               
                 body: JSON.stringify({ admin_name, password }),
             });
 
