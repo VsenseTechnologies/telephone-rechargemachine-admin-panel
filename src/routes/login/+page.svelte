@@ -2,6 +2,7 @@
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
    import Errormessage from '../../lib/errormessage.svelte';
+   import { page } from '$app/stores';
    
 
     let vsenseText = '';

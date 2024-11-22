@@ -54,7 +54,7 @@
                 <li>
                     <button
                         class={buttonClass}
-                        on:click={() => {goto("/settings"); isDrawerOpen = false;}}
+                        on:click={() => {goto("/login/"+$page.params.listofmachines); isDrawerOpen = false;}}
                     >
                         <i class="fa-solid fa-cog mr-3"></i> Settings
                     </button>

@@ -1,5 +1,5 @@
-export const load = ({ params }) => { 
-    return {
-     deletemachine: params.deletemachine,
-    };
-  };
+// export const load = ({ params }) => { 
+//     return {
+//     deletemachines: params.deletemachines,
+//     };
+//   };
